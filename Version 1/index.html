@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Das Projekt — Start</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="app">
+  <!-- Sidebar (hover expand) -->
+  <aside class="sidebar" aria-label="Navigation">
+    <div class="sidebar__inner">
+      <nav class="nav" aria-label="Hauptbereiche">
+        <!-- Start -->
+        <div class="navItem">
+          <a class="navBtn" href="index.html">
+            <i class="fas fa-home"></i>
+            <span class="navLabel">Start</span>
+          </a>
+        </div>
+
+        <!-- Fokus + sub: aktuelles fokus projekt -->
+        <div class="navItem">
+          <a class="navBtn" href="fokus/">
+            <i class="fas fa-bullseye"></i>
+            <span class="navLabel">Fokus</span>
+          </a>
+          <div class="navSub" aria-label="Fokus Projekt">
+            <a href="fokus/" id="nav-focus-project"></a>
+          </div>
+        </div>
+
+        <!-- Pläne -->
+        <div class="navItem">
+          <a class="navBtn" href="plaene/">
+            <i class="fa-solid fa-folder"></i>
+            <span class="navLabel">Pläne</span>
+          </a>
+        </div>
+
+        <!-- Projekte + top 5 -->
+        <div class="navItem">
+          <a class="navBtn" href="projekte/">
+            <i class="fa-solid fa-box-archive"></i>
+            <span class="navLabel">Projekte</span>
+          </a>
+          <div class="navSub" aria-label="Top Projekte">
+            <a href="projekte/" id="nav-top-project-1"></a>
+            <a href="projekte/" id="nav-top-project-2"></a>
+            <a href="projekte/" id="nav-top-project-3"></a>
+            <a href="projekte/" id="nav-top-project-4"></a>
+            <a href="projekte/" id="nav-top-project-5"></a>
+          </div>
+        </div>
+
+        <!-- Arbeit + optional sub -->
+        <div class="navItem">
+          <a class="navBtn" href="arbeit/">
+            <i class="fa-solid fa-briefcase"></i>
+                <span class="navLabel">Arbeit</span>
+            
+          </a>
+          <div class="navSub" aria-label="Arbeit">
+            <a href="arbeit/"></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <div class="content">
+    <main class="page page--start" id="page-start">
+      <section class="start" aria-label="Start Dashboard">
+        <!-- Center Block -->
+        <header class="start__center" aria-label="Zeit und Datum">
+          <div class="start__time" id="time">--:--</div>
+          <div class="start__date" id="date">--</div>
+          <div class="start__quote" id="quote">„Ein Schritt reicht.“</div>
+        </header>
+
+        <!-- Themes -->
+        <section class="themes" aria-label="Themen">
+          <!-- Start theme block (größer) -->
+          <div class="themeStart" id="theme-start" aria-label="Start Thema">
+            <div class="themeStart__title">Start</div>
+            <div class="themeStart__meta">
+              <div id="start-last">Zuletzt: —</div>
+              <div id="start-note">Notiz: —</div>
+              <div id="start-event">Termin: —</div>
+            </div>
+          </div>
+
+          <!-- Row 2: Fokus + Arbeit -->
+          <div class="themeRow2" aria-label="Fokus und Arbeit">
+            <a class="themeCard themeCard--square" href="fokus/" aria-label="Fokus">
+              <div class="themeCard__title">Fokus</div>
+              <div class="themeCard__meta">Fokus: —</div>
+            </a>
+
+            <a class="themeCard themeCard--square" href="arbeit/" aria-label="Arbeit">
+              <div class="themeCard__title">Arbeit</div>
+              <div class="themeCard__meta">Zuletzt: —</div>
+            </a>
+          </div>
+
+          <!-- Row 3: Projekte + Pläne -->
+          <div class="themeRow3" aria-label="Projekte und Pläne">
+            <a class="themeCard" href="projekte/" aria-label="Projekte">
+              <div class="themeCard__title">Projekte</div>
+              <div class="themeCard__meta">Zuletzt: —</div>
+            </a>
+
+            <a class="themeCard" href="plaene/" aria-label="Pläne">
+              <div class="themeCard__title">Pläne</div>
+              <div class="themeCard__meta">Zuletzt: —</div>
+            </a>
+          </div>
+
+          <!-- Notes input -->
+          <div class="startNotes" aria-label="Notizen">
+            <div class="startNotes__label">Notiz (kurz)</div>
+            <textarea class="startNotes__input" id="start-notes" placeholder="Kurz notieren…"></textarea>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- Global Scripts -->
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

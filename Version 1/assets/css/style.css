@@ -1,0 +1,566 @@
+/* =========================================
+   Das Projekt — Global Styles
+   Minimal • Dark • Calm
+========================================= */
+
+:root {
+  --bg: #0b0d12;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-hover: rgba(255, 255, 255, 0.07);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.62);
+  --faint: rgba(255, 255, 255, 0.38);
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --radius: 18px;
+  --radius-sm: 14px;
+
+  --max: 1100px;
+  --pad: 24px;
+}
+
+/* Global Reset-ish */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Page Wrapper */
+.page {
+  width: 100%;
+  max-width: var(--max);
+}
+
+/* =========================================
+   Start Dashboard
+========================================= */
+
+.start {
+  width: 100%;
+  display: grid;
+  gap: 28px;
+  justify-items: center;
+}
+
+/* Center block (time/date/quote) */
+.start__center {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.start__time {
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.start__date {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.start__quote {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--faint);
+  font-style: normal; /* ruhig, nicht zu kitschig */
+}
+
+/* Areas grid (3-2) */
+.start__areas {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* second row centered visually by spanning */
+.start__areas > :nth-child(4) {
+  grid-column: 1 / span 2;
+}
+.start__areas > :nth-child(5) {
+  grid-column: 3 / span 1;
+}
+
+/* Card */
+.area-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 18px;
+  min-height: 92px;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.area-card:hover {
+  background: var(--panel-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.area-card__title {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.area-card__meta {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Optional calendar hint block (later) */
+.start__calendarHint {
+  width: 100%;
+  max-width: 760px;
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  color: var(--muted);
+}
+
+.calendarHint__title {
+  font-size: 13px;
+  color: var(--faint);
+  margin-bottom: 8px;
+}
+
+.calendarHint__items {
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  .start__areas {
+    grid-template-columns: 1fr;
+  }
+  .start__areas > :nth-child(4),
+  .start__areas > :nth-child(5) {
+    grid-column: auto;
+  }
+}
+
+/* =========================================
+   Layout Shell (Sidebar + Content)
+========================================= */
+
+.app {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0; /* vorher padding var(--pad) -> jetzt übernimmt page spacing */
+}
+
+/* Content wrapper so wir überall gleiche Abstände haben */
+.content {
+  padding: var(--pad);
+}
+
+/* =========================================
+   Sidebar (Hover Expand, No Button)
+========================================= */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 64px;
+  background: rgba(255, 255, 255, 0.02);
+  border-right: 1px solid var(--border);
+  transition: width 180ms ease;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 220px;
+}
+
+.sidebar__inner {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 14px 10px;
+  align-items: center;
+}
+
+/* Nav */
+.nav {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+/* Item */
+.navItem {
+  display: grid;
+  gap: 6px;
+}
+
+.navBtn {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center; /* alle buttons zentriert */
+  gap: 10px;
+
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent;
+
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 650;
+
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.navBtn:hover {
+  background: var(--panel);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Label nur beim Hover der Sidebar sichtbar */
+.navLabel {
+  display: none;
+  white-space: nowrap;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.sidebar:hover .navLabel {
+  display: inline;
+}
+
+/* Subitems: nur bei Sidebar-hover UND Item-hover */
+.navSub {
+  display: none;
+  padding-left: 18px; /* eingerückt */
+  gap: 6px;
+}
+
+.sidebar:hover .navItem:hover .navSub {
+  display: grid;
+}
+
+.navSub a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.navSub a:hover {
+  background: var(--panel);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: var(--text);
+}
+
+/* =========================================
+   Topbar (Title centered, Back left, Time right)
+========================================= */
+
+.topbar {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto 18px auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius);
+}
+
+.topbar__left {
+  justify-self: start;
+}
+
+.topbar__center {
+  justify-self: center;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.topbar__right {
+  justify-self: end;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.topbar__back {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.topbar__back:hover {
+  background: var(--panel-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================
+   Start Dashboard (New Placement)
+========================================= */
+
+.page--start .content {
+  display: grid;
+  justify-items: center;
+}
+
+/* Uhr nach oben */
+.start {
+  width: 100%;
+  max-width: var(--max);
+  min-height: 100vh;
+  padding: var(--pad);
+  display: grid;
+  align-content: start;
+  gap: 18px;
+}
+
+.start__center {
+  text-align: center;
+  padding-top: 10px; /* weiter nach oben */
+}
+
+.start__time {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 650;
+  line-height: 1;
+}
+
+.start__date {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.start__quote {
+  margin-top: 10px;
+  font-size: 16px; /* etwas größer */
+  color: var(--faint);
+}
+
+/* Theme Blocks */
+.themes {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+}
+
+/* Start block groß */
+.themeStart {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 18px;
+  transition: padding 140ms ease, min-height 140ms ease;
+}
+
+.themeStart__title {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.themeStart__meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  display: grid;
+  gap: 6px;
+}
+
+/* Wenn leer -> klein, eine Zeile */
+.themeStart--compact {
+  padding: 10px 14px;
+}
+
+.themeStart--compact .themeStart__meta {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Row 2: Fokus + Arbeit (quadratisch) */
+.themeRow2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* Row 3: Projekte + Pläne */
+.themeRow3 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.themeCard {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 16px;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.themeCard:hover {
+  background: var(--panel-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.themeCard__title {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.themeCard__meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Fokus/Arbeit: eher quadratisch */
+.themeCard--square {
+  height: 220px;       /* feste Höhe = ruhig + kontrolliert */
+}
+
+
+/* Notizfeld unten */
+.startNotes {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 14px;
+}
+
+.startNotes__label {
+  font-size: 12px;
+  color: var(--faint);
+  margin-bottom: 8px;
+}
+
+.startNotes__input {
+  width: 100%;
+  min-height: 300px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  padding: 12px 12px;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+}
+
+.startNotes__input:focus {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Mobile */
+@media (max-width: 820px) {
+  .sidebar { display: none; } /* später optional: mobile button, aber du wolltest keinen */
+  .app { grid-template-columns: 1fr; }
+  .themeRow2, .themeRow3 { grid-template-columns: 1fr; }
+  .themeCard--square { aspect-ratio: auto; }
+}
+
+/* =========================================
+   Simple Subpages (Placeholder)
+========================================= */
+
+.simple {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.simple__header {
+  margin-bottom: 18px;
+}
+
+.simple__back {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.simple__back:hover {
+  background: var(--panel-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.simple__title {
+  margin: 16px 0 6px 0;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+
+.simple__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.simple__panel {
+  margin-top: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.simple__label {
+  font-size: 12px;
+  color: var(--faint);
+  margin-bottom: 8px;
+}
+
+.simple__value {
+  font-size: 14px;
+  color: var(--text);
+}

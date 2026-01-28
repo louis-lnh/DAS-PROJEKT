@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Das Projekt — Fokus</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="app">
+  <!-- Sidebar (hover expand) -->
+  <aside class="sidebar" aria-label="Navigation">
+    <div class="sidebar__inner">
+      <nav class="nav" aria-label="Hauptbereiche">
+        <!-- Start -->
+        <div class="navItem">
+          <a class="navBtn" href="index.html">
+            <i class="fas fa-home"></i>
+            <span class="navLabel">Start</span>
+          </a>
+        </div>
+
+        <!-- Fokus + sub: aktuelles fokus projekt -->
+        <div class="navItem">
+          <a class="navBtn" href="fokus/">
+            <i class="fas fa-bullseye"></i>
+            <span class="navLabel">Fokus</span>
+          </a>
+          <div class="navSub" aria-label="Fokus Projekt">
+            <a href="fokus/" id="nav-focus-project"></a>
+          </div>
+        </div>
+
+        <!-- Pläne -->
+        <div class="navItem">
+          <a class="navBtn" href="plaene/">
+            <i class="fa-solid fa-folder"></i>
+            <span class="navLabel">Pläne</span>
+          </a>
+        </div>
+
+        <!-- Projekte + top 5 -->
+        <div class="navItem">
+          <a class="navBtn" href="projekte/">
+            <i class="fa-solid fa-box-archive"></i>
+            <span class="navLabel">Projekte</span>
+          </a>
+          <div class="navSub" aria-label="Top Projekte">
+            <a href="projekte/" id="nav-top-project-1"></a>
+            <a href="projekte/" id="nav-top-project-2"></a>
+            <a href="projekte/" id="nav-top-project-3"></a>
+            <a href="projekte/" id="nav-top-project-4"></a>
+            <a href="projekte/" id="nav-top-project-5"></a>
+          </div>
+        </div>
+
+        <!-- Arbeit + optional sub -->
+        <div class="navItem">
+          <a class="navBtn" href="arbeit/">
+            <i class="fa-solid fa-briefcase"></i>
+                <span class="navLabel">Arbeit</span>
+            
+          </a>
+          <div class="navSub" aria-label="Arbeit">
+            <a href="arbeit/"></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <div class="content">
+    <!-- Topbar -->
+    <header class="topbar" aria-label="Topbar">
+      <div class="topbar__left">
+        <a class="topbar__back" href="../index.html">← Zurück</a>
+      </div>
+      <div class="topbar__center">Fokus</div>
+      <div class="topbar__right" id="topbar-time">--:--</div>
+    </header>
+
+    <main class="page" id="page-fokus">
+      <!-- info: Fokus Seite kommt als nächstes richtig -->
+      <section class="simple" aria-label="Fokus Inhalt">
+        <div class="simple__panel">
+          <div class="simple__label">Status</div>
+          <div class="simple__value">Placeholder — Fokus-Projekt + Notizfeld kommt als nächstes.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

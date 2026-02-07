@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Idle Crypto Miner</title>
+        <link rel="stylesheet" href="-" /> <!--projekt css-->
+        <link rel="stylesheet" href="-" /> <!--game css-->
+    </head>
+    <body>
+        <main class="idle-app" id="app">
+            <header class="idle-topbar">
+                <div class="idle-profile">
+                    <div class="idle-avatar" aria-hidden="true"></div>
+                    <div class="idle-wallet">
+                        <div class="idle-money" id="money">€0</div>
+                        <div class="idle-subwallet">
+                            <span class="pill" id="token">Token: 0</span>
+                            <span class="pill" id="investors">Investors: 0</span>
+                            <span class="pill" id="meta">Megatoken: 0</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="icon-btn" id="btnMenu" aria-label="Menü öffnen">
+                    <span class="icon-lines"></span>
+                </button>
+            </header>
+
+            <section class="idle-offline" id="offlineBanner" hidden>
+                <div class=""offline-card">
+                    <div class="offline-title">Offline Earnings</div>
+                    <div class="offline-text" id="offlineText">+ €0</div>
+                    <button class="btn" id="offlineCollect">Einsammeln</button>
+                </div>
+            </section>
+            
+            <section class="idle-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Income / sec</div>
+                    <div class="stat-value" id="incomePerSec">€0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Lifetime</div>
+                    <div class="stat-value" id="lifetime">€0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Session</div>
+                    <div class="stat-value" id="session">€0</div>
+                </div>
+            </section>
+
+            <section class="idle-list" id="businessList" aria-label="Businesses">
+            
+            </section>
+
+            <nav class="idle-bottomnav" aria-label="Navigation">
+                <button class="nav-btn is-active" data-tab="home">Home</button>
+                <button class="nav-btn" data-tab="upgrades">Upgrades</button>
+                <button class="nav-btn" data-tab="stats">Stats</button>
+                <button class="nav-btn" data-tab="reset">Reset</button>
+            </nav>
+        </main>
+
+        <dialog class="idle-dialog" id="menuDialog">
+            <div class="dialog-head">
+                <h2>Menü</h2>
+                <button class="icon-btn" id="btnCloseMenu" aria-label="Schließen">
+                    x
+                </button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-section">
+                    <h3>Speicher</h3>
+                    <div class="dialog-row">
+                        <button class="btn" id="btnSave">Save</button>
+                        <button class="btn btn-ghost" id="btnHardReset">Hard Reset</button>
+                    </div>
+                    <p class="hint">Hard Reset löscht nur lokalen Spielstand.</p>
+                </div>
+                <div class="dialog-section">
+                    <h3>Offline Cap</h3>
+                    <p class="hint">Maximal 12 Stunden Offline Earnings.</p>
+                </div>
+            </div>
+        </dialog>
+        
+        <script src="-"></script> <!--game js/logik-->
+    </body>
+</html>

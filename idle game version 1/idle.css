@@ -1,4 +1,373 @@
-/* 
-idle css zuhause machen
-idle js auch zuhause machen
-*/
+/* Idle Game – eigener Layer, passt auf Mobile / Dark UI */
+
+.idle-app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  background: radial-gradient(1200px 600px at 50% 0%, rgba(90, 200, 255, .10), transparent 60%),
+              radial-gradient(900px 500px at 10% 40%, rgba(160, 90, 255, .10), transparent 60%),
+              #0b0f14;
+  color: rgba(255,255,255,.92);
+}
+
+.idle-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.idle-profile {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.idle-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.idle-wallet {
+  min-width: 0;
+}
+
+.idle-money {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+
+.idle-subwallet {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.85);
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.9);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.icon-lines {
+  width: 18px;
+  height: 12px;
+  display: block;
+  position: relative;
+}
+.icon-lines::before,
+.icon-lines::after,
+.icon-lines {
+  background: transparent;
+}
+.icon-lines::before,
+.icon-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255,255,255,.85);
+  border-radius: 99px;
+}
+.icon-lines::before { top: 0; }
+.icon-lines::after { bottom: 0; }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+.icon-lines { }
+
+.idle-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.idle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 78px; /* Platz für Bottom Nav */
+}
+
+.biz-card {
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  align-items: center;
+}
+
+.biz-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(90,200,255,.35), rgba(160,90,255,.25));
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.biz-mid {
+  min-width: 0;
+}
+.biz-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.biz-name {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+.biz-level {
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  white-space: nowrap;
+}
+
+.biz-bar {
+  margin-top: 8px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.biz-bar > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(90,200,255,.95), rgba(255, 210, 70, .95));
+}
+
+.biz-sub {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,.75);
+  font-size: 12px;
+}
+
+.biz-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  min-width: 128px;
+}
+
+.btn {
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(120, 90, 255, .95), rgba(90,200,255,.85));
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: .2px;
+}
+
+.btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.price {
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  text-align: center;
+}
+
+.idle-bottomnav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(8, 10, 14, .72);
+  border-top: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.85);
+  font-weight: 700;
+  cursor: pointer;
+}
+.nav-btn.is-active {
+  background: rgba(90,200,255,.18);
+  border-color: rgba(90,200,255,.35);
+}
+
+.idle-offline {
+  display: grid;
+  place-items: center;
+}
+.offline-card {
+  width: min(520px, 100%);
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.offline-title {
+  font-weight: 900;
+}
+.offline-text {
+  color: rgba(255,255,255,.75);
+}
+
+.idle-dialog {
+  width: min(640px, 92vw);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: #0b0f14;
+  color: rgba(255,255,255,.92);
+  padding: 0;
+}
+.idle-dialog::backdrop {
+  background: rgba(0,0,0,.6);
+}
+.dialog-head {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+.dialog-body {
+  padding: 14px;
+  display: grid;
+  gap: 14px;
+}
+.dialog-section h3 {
+  margin: 0 0 8px 0;
+}
+.dialog-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hint {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: rgba(255,255,255,.60);
+}
+
+@media (max-width: 460px) {
+  .biz-card {
+    grid-template-columns: 54px 1fr;
+    grid-template-areas:
+      "icon mid"
+      "actions actions";
+  }
+  .biz-icon { grid-area: icon; }
+  .biz-mid { grid-area: mid; }
+  .biz-actions { grid-area: actions; min-width: 0; }
+}

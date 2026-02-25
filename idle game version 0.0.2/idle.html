@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Idle Miner</title>
+
+  <!-- Global CSS von "Das Projekt" -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Game CSS -->
+  <link rel="stylesheet" href="./idle.css" />
+</head>
+
+<body>
+  <main class="idle-app" id="app">
+    <header class="idle-topbar">
+      <div class="idle-profile">
+        <div class="idle-avatar" aria-hidden="true"></div>
+
+        <div class="idle-wallet">
+          <div class="idle-money" id="money">$0</div>
+
+          <div class="idle-subwallet">
+            <span class="pill" id="token">Token: 0</span>
+            <span class="pill" id="investors">Investors: 0</span>
+            <span class="pill" id="meta">Megatoken: 0</span>
+            <span class="pill pill-soft" id="globalMult">x1.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="idle-actions">
+        <div class="buy-mode" aria-label="Kaufmodus">
+          <button class="mode-btn is-active" data-mode="1">x1</button>
+          <button class="mode-btn" data-mode="10">x10</button>
+          <button class="mode-btn" data-mode="25">x25</button>
+          <button class="mode-btn" data-mode="max">MAX</button>
+        </div>
+
+        <button class="icon-btn" id="btnMenu" aria-label="Menü öffnen">
+          <span class="icon-lines"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="idle-banner" id="offlineBanner" hidden>
+      <div class="banner-card">
+        <div>
+          <div class="banner-title">Offline Farming</div>
+          <div class="banner-text" id="offlineText">+ $0</div>
+        </div>
+        <button class="btn" id="offlineCollect">Einsammeln</button>
+      </div>
+    </section>
+
+    <section class="idle-stats">
+      <div class="stat-card">
+        <div class="stat-label">Income / sec</div>
+        <div class="stat-value" id="incomePerSec">$0 / sec</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Lifetime</div>
+        <div class="stat-value" id="lifetime">$0</div>
+      </div>
+
+      <div class="stat-card" id="sessionCard">
+        <div class="stat-label">Session</div>
+        <div class="stat-value" id="sessionGain">$0</div>
+        <div class="stat-sub" id="sessionSub">vs last: $0</div>
+      </div>
+    </section>
+
+    <!-- PANELS -->
+    <section class="panel is-active" id="panel-home" aria-label="Home">
+      <div class="panel-head">
+        <h2>Businesses</h2>
+        <div class="hint">Kaufen / Leveln → Unlocks → Prestige</div>
+      </div>
+
+      <div class="idle-list" id="businessList"></div>
+    </section>
+
+    <section class="panel" id="panel-unlocks" aria-label="Unlocks">
+      <div class="panel-head">
+        <h2>Unlocks</h2>
+        <div class="hint">Alle 25 Level pro Business: x2 (nicht global)</div>
+      </div>
+
+      <div class="unlock-grid" id="unlockGrid"></div>
+    </section>
+
+    <section class="panel" id="panel-upgrades" aria-label="Upgrades">
+      <div class="panel-head">
+        <h2>Upgrades</h2>
+        <div class="hint">Coming soon – hier kommen später Money/Investors/Megatoken-Upgrades rein.</div>
+      </div>
+
+      <div class="empty-card">
+        <div class="empty-title">Noch leer</div>
+        <div class="empty-text">Für v0.0.1(3) – erst Prestige & Unlocks stabil.</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-prestige" aria-label="Prestige">
+      <div class="panel-head">
+        <h2>Prestige</h2>
+        <div class="hint">3 Arten. Full Reset kostenlos, aber langer Cooldown.</div>
+      </div>
+
+      <div class="prestige-cards">
+        <div class="prestige-card">
+          <div class="prestige-title">1) Full Reset (Money + Businesses)</div>
+          <div class="prestige-desc">Größter Multiplier. Kostenlos. Cooldown.</div>
+          <div class="prestige-row">
+            <div class="prestige-meta">
+              <div class="mini">Reward</div>
+              <div class="big" id="fullReward">+0 Megatoken</div>
+              <div class="mini" id="fullCooldown">Cooldown: –</div>
+            </div>
+            <button class="btn" id="btnFullReset">FULL RESET</button>
+          </div>
+        </div>
+
+        <div class="prestige-card">
+          <div class="prestige-title">3) Reset ALL Businesses (Money bleibt)</div>
+          <div class="prestige-desc">Mittlerer Multiplier. Kostet Money.</div>
+          <div class="prestige-row">
+            <div class="prestige-meta">
+              <div class="mini">Cost</div>
+              <div class="big" id="allBizCost">$0</div>
+              <div class="mini">Reward</div>
+              <div class="big" id="allBizReward">+0 Investors</div>
+            </div>
+            <button class="btn btn-ghost" id="btnAllBizReset">RESET ALL</button>
+          </div>
+        </div>
+
+        <div class="prestige-card">
+          <div class="prestige-title">2) Reset SINGLE Business (Money bleibt)</div>
+          <div class="prestige-desc">Kleinster Multiplier. Kostet Money. Business wählen.</div>
+
+          <div class="prestige-row">
+            <div class="prestige-meta">
+              <label class="mini" for="singleBizSelect">Business</label>
+              <select class="select" id="singleBizSelect"></select>
+
+              <div class="mini">Cost</div>
+              <div class="big" id="singleBizCost">$0</div>
+
+              <div class="mini">Reward</div>
+              <div class="big" id="singleBizReward">+0 Token</div>
+            </div>
+
+            <button class="btn btn-ghost" id="btnSingleBizReset">RESET ONE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-stats" aria-label="Stats">
+      <div class="panel-head">
+        <h2>Stats</h2>
+        <div class="hint">Basic Stats – später mehr.</div>
+      </div>
+
+      <div class="stats-list" id="statsList"></div>
+    </section>
+
+    <section class="panel" id="panel-settings" aria-label="Settings">
+      <div class="panel-head">
+        <h2>Settings</h2>
+        <div class="hint">Save/Reset & Dev-Tools.</div>
+      </div>
+
+      <div class="settings-card">
+        <button class="btn" id="btnSave">Save</button>
+        <button class="btn btn-ghost" id="btnHardReset">Hard Reset</button>
+        <div class="hint" style="margin-top:10px;">
+          Hard Reset löscht nur localStorage. (Cloud später optional.)
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="idle-bottomnav" aria-label="Navigation">
+      <button class="nav-btn is-active" data-tab="home">Home</button>
+      <button class="nav-btn" data-tab="unlocks">Unlocks</button>
+      <button class="nav-btn" data-tab="upgrades">Upgrades</button>
+      <button class="nav-btn" data-tab="prestige">Prestige</button>
+      <button class="nav-btn" data-tab="stats">Stats</button>
+      <button class="nav-btn" data-tab="settings">Settings</button>
+    </nav>
+  </main>
+
+  <!-- Config FIRST, then Game -->
+  <script src="./config.js"></script>
+  <script src="./idle.js"></script>
+</body>
+</html>
